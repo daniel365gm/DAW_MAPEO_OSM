@@ -12,7 +12,7 @@
 		<div class="navbar-nav"> 
 			<a class="nav-item nav-link" href="recurso.php">Recursos</a>   <!--  active para mas blanco -->
 			<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a> 
-			<a class="nav-item nav-link" href="about.php">Espiga</a>  
+			<a class="nav-item nav-link" href="about.php"></a>  
 			<a class="nav-item nav-link" href="gestion.php">Gestion</a>  
 		</div>
 		<div class="navbar-nav ml-auto" id="navbar2">
