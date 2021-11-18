@@ -51,12 +51,12 @@ var iconoTipo1 = L.icon(opcionesIcono);
 
 //##############################################
 //################funcion crear un marcador
-function pin_mark(longM1,latM1,nombre){
+function pin_mark(longM1,latM1,nombre,texto){
 
 	// var longM1= 43.08;
 	// var latM1= -8.37;
 	var opcionesMarcador={
-		title: "empresa A",
+		title: nombre,
 		icon: iconoTipo1
 	};
 	// draggable, clickable,
@@ -64,7 +64,8 @@ function pin_mark(longM1,latM1,nombre){
 	var marcador1 = new L.Marker([longM1,latM1], opcionesMarcador);
 
 	// anidar un pop-up al marcador
-	marcador1.bindPopup(nombre).openPopup();
+	
+	marcador1.bindPopup(texto).openPopup();
 
 
 	//añadir el marcador al mapa
