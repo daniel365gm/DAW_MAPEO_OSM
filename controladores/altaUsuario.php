@@ -39,8 +39,7 @@ $consultar_email ="SELECT email_rec from recursos where email_rec='$mail'";
 $email_existe= $con->query($consultar_email);
 
 
-
-// echo" $pass"; 
+echo" $pass"; 
 //se comprueba si ya existe el correo
 if($email_existe->fetch_array()){
 	echo"
@@ -50,6 +49,7 @@ if($email_existe->fetch_array()){
 	</script>
 	";
 }else{
+
 	//si el correo es nuevo ==> nuevo recurso:
 	$insert= "INSERT INTO recursos (tipo_rec, web_rec, email_rec, pass_rec, tel_rec, cont_rec, desc_rec ) 
 					VALUES ('$iniciativa','$web','$mail','$pass', '$tel','$cont','$desc')";
@@ -70,24 +70,22 @@ if($email_existe->fetch_array()){
 		}
 
 
+
+
+		//creacion de carpetas
+		if (!is_dir('../usuarios/'.$last_id)) {
+			@mkdir('../usuarios/'.$last_id.'/galeria', 0777,true);
+		}
+
+
+
 		
 		//insertar direcciones
 		$ins_dir ="INSERT INTO direcciones (id_rec, direccion_dir, num_dir, poblacion_dir, lat_dir, lon_dir) 
 									VALUES ('$last_id', '$calle', '$num', '$pob', '$lat', '$lon')";
 		
 
-
-
-		if (!is_dir('users/'.$id) {
-		    mkdir('ursers/'.$id, 0777);
-		}
-
-
-
-
-
-
-		//alerta de usuario registrado
+		//alerta de confimacion
 		if($con->query($ins_dir)){
 			echo"insertado2";
 			echo"

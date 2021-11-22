@@ -68,7 +68,7 @@
 				<!-- <br><br> -->
 				<!-- formulario login -->
 				<div id="form_log">
-					<form method="POST" action="../controlador/salir.php">
+					<form method="POST" action="../controladores/salir.php">
 						Quiere abandonar la sesion?:<br>
 						<button type="button" class="btn btn-primary float-left" data-dismiss="modal">NO</button>
 					 	<button id="subm_log" type="submit" class="btn btn-primary float-right">SI</button>
@@ -141,7 +141,7 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<br><br>
 				<!-- formulario registro -->
-				<form id="form_insc" method="POST" action="../controlador/altaUsuario.php">
+				<form id="form_insc" method="POST" action="../controladores/altaUsuario.php">
 					<div class="row">
 						<div id="form_reg" class="col-sm-6">
 						  	<div class="form-group">			
@@ -289,7 +289,7 @@
 		</div>
 	</div>
 </div>
-<!-- <script src="../controlador/validar_inscripcion.js"></script> -->
+<!-- <script src="../controladores/validar_inscripcion.js"></script> -->
 
 
 
@@ -303,7 +303,7 @@
 				<br><br>
 				<!-- formulario login -->
 				<div id="form_log">
-					<form method="POST" action="../controlador/entrar.php">
+					<form method="POST" action="../controladores/entrar.php">
 					  	<div class="form-group">
 						    
 						    <input type="email" 

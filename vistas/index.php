@@ -98,7 +98,6 @@ session_start();
 		<!-- <button id="btn_cerrar_listado" onclick="m_o2()">X</button> -->
 		<label>Resultados:</label>
 
-		
 	</div>
 </div>
 <!--  -->

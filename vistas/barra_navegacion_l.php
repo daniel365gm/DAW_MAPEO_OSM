@@ -55,7 +55,7 @@
 				<!-- <br><br> -->
 				<!-- formulario login -->
 				<div id="form_log">
-					<form method="POST" action="../controlador/salir.php">
+					<form method="POST" action="../controladores/salir.php">
 						Quiere abandonar la sesion?:<br>
 						<button type="button" class="btn btn-primary float-left" data-dismiss="modal">NO</button>
 					 	<button id="subm_log" type="submit" class="btn btn-primary float-right">SI</button>
