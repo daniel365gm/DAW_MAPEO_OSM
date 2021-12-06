@@ -5,7 +5,7 @@
 include("head.html");
 ?>
 <!-- llamadas a estilos o js epecificos de la ventana en el head -->
-	<link rel="stylesheet" type="text/css" href="estilos/recurso.css">
+	<link rel="stylesheet" type="text/css" href="css/recurso.css">
 	<!-- htmx -->
 	<!-- <script src="https://unpkg.com/htmx.org@1.8.4"></script> -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
@@ -102,7 +102,43 @@ include("barra_navegacion_l.php");
 		</div> <!-- end vista -->
 
 
+		<script>
+			function mostrar_recurso(id){
 
+				$.post("mostrarDatosGestion.php",
+					{ver_id:id},
+					function(mensaje){
+						$("#vista").html(mensaje);
+					});
+				
+			}
+			// mostrar_rec(1);
+			// $("#2").on("click",mostrar_rec(this.id));
+			//addEventListener("click",mostrar_rec(this.id),true);
+		
+		</script>
+
+		<!-- acciones de los botones del menu de gestion -->
+		<script type="text/javascript">
+			function accion_gestion(accion, id){
+				$.post("../controladores/accionGestion.php",
+					{id:id,accion:accion},
+					function(mensaje){
+						$("#mostrar_accion").html(mensaje);
+						
+						actualizar_tabla()
+					});
+			}
+
+			function actualizar_tabla(){
+				$.post("../controladores/tabla_gestion.php",
+					{},
+					function(mensaje){
+						$("#datos_tabla").html(mensaje);
+						
+					});
+			}
+		</script>
 
 
 	</div><!-- end row -->
