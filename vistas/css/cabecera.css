@@ -1,0 +1,17 @@
+nav{
+	opacity: 0.9; 
+}
+div#mi-mapa{
+	/*width:100%; */
+	height:100vh;
+}
+
+.leaflet-top {
+bottom: 0;
+}
+
+
+.leaflet-top {
+  margin-top: 60px;
+}
+
