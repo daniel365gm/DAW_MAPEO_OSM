@@ -52,7 +52,7 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<br><br>
 				<!-- formulario registro -->
-				<form id="form_insc" method="POST" action="../controlador/guardarDatos.php">
+				<form id="form_insc" method="POST" action="../controladores/guardarDatos.php">
 					<div class="row">
 						<div id="form_reg" class="col-sm-6">
 						  	<div class="form-group">			
@@ -186,7 +186,7 @@
 						<div class="col-6">
 							<div class="form-group" style="margin-left: 10%;">
 							<?php
-								include("../controlador/consulta_categoria.php");
+								include("../controladores/consulta_categoria.php");
 							?>
 							</div>
 							<button id="enviar_inscripcion" type="submit" class="btn btn-primary float-right">
