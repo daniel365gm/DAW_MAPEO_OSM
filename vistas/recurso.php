@@ -9,7 +9,7 @@ include("head.html");
 <!--  -->
 <?php
 session_start();
-include("barra_navegacion.php");
+	include("barra_navegacion.php");
 ?>
 
 
@@ -49,7 +49,7 @@ include("barra_navegacion.php");
 		</div>
 
 <!-- TEMPORAL  BOTON SUBMIT ############################################## -->
-		<!-- <script type="text/javascript">
+		<script type="text/javascript">
 			
 		let peticion;
 		const buscar_calle = () => {
@@ -80,7 +80,7 @@ include("barra_navegacion.php");
 			// document.getElementById("gogo").click();
 
 		}
-		</script> -->
+		</script>
 
 		<input type="text" id="ilat" name="lat">
 
@@ -118,8 +118,67 @@ include("barra_navegacion.php");
 	<!-- END FORM  -->
 	<br>
 	<div id="gal">
-		<img class="gal" src="img_p/foto1.png">
-		<img class="gal" src="img_p/foto2.png">
+		<div id="show"></div>
+
+		<center>
+			<form  enctype="multipart/form-data">
+				<input  style="width: 75%; display: inline-flex;" type="file" id="i_archivo" class="form-control">
+				<input  style="display: inline" type="button" class="btn btn-warning" value="enviar" onclick="guardar_foto();">
+			</form>
+		</center>
+
+		<script type="text/javascript">
+
+
+	function guardar_foto(){
+
+		// var nombre= $("input[type=file]").val();
+		// var final =  nombre.split('\\').pop();
+		// alert(final);
+
+		var archivo = $("input[type=file]")[0].files[0];
+
+
+		// $("div#show").html("");
+		var formulario = new FormData();
+		formulario.append("fichero",archivo);
+
+
+		$.ajax({
+			url: "../controladores/editorGaleria.php",
+			type: "POST",
+			data: formulario,
+			contentType: false,
+			processData: false,
+			success: function(retorno){
+				$("div#show").html(retorno);
+				$("#i_archivo").val("");
+			}
+		});
+
+
+	}
+
+		</script>
+
+		<?php
+			function mostrar_galeria(){
+				$id = "6";
+			    $directory="../usuarios/$id/galeria";
+			    $dirint = dir($directory);
+			    while (($archivo = $dirint->read()) !== false)
+			    {
+			    	if ($archivo == "."  || $archivo == ".."){
+			    	}else{
+			        	echo "<image class='gal' src='$directory/$archivo'></image>";
+			        }
+			    }
+			    $dirint->close();
+			 }
+			 mostrar_galeria();
+		?>
+
+
 	</div>
 
 </div>
