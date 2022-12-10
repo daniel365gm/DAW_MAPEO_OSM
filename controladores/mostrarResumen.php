@@ -48,7 +48,7 @@ while($row= $lista->fetch_array()){
 
 
 		<script>
-				var texto_pop = "<a target=_blank href=about.php>'.$row["nom_rec"].'</a> ";
+				var texto_pop = "<a target=_blank href=../vistas/recurso.php?rec='.$row["id_rec"].'>'.$row["nom_rec"].'</a> ";
 				pin_mark('.$row["lat_dir"].','.$row["lon_dir"].',"'.$row["nom_rec"].'",texto_pop);
 		</script>
 			';

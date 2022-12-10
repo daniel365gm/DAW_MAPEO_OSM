@@ -6,10 +6,6 @@
 
 ?>
 
-
-
-
-</head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top"> 
 	<a class="navbar-brand" href="index.php">
@@ -21,7 +17,7 @@
 	</button> 
 	<div class="collapse navbar-collapse" id="navbar1"> 
 		<div class="navbar-nav"> 
-			<a class="nav-item nav-link" href="recurso.php">Recursos</a>   <!--  active para mas blanco -->
+			<a class="nav-item nav-link" href="recurso.php"></a>   <!--  active para mas blanco -->
 			<!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a>  -->
 			<a class="nav-item nav-link" href="#"></a>  
 			<!-- <a class="nav-item nav-link" href="gestion.php">Gestion</a>   -->
@@ -90,12 +86,6 @@
 
 ?>
 
-
-
-
-
-
-</head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top"> 
 	<a class="navbar-brand" href="index.php">
@@ -107,7 +97,7 @@
 	</button> 
 	<div class="collapse navbar-collapse" id="navbar1"> 
 		<div class="navbar-nav"> 
-			<a class="nav-item nav-link" href="recurso.php">Recursos</a>   <!--  active para mas blanco -->
+			<a class="nav-item nav-link" href="recurso.php"></a>   <!--  active para mas blanco -->
 			<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a> 
 			<!-- <a class="nav-item nav-link" href="gestion.php">Gestion</a>   -->
 		</div>
