@@ -15,14 +15,24 @@
 		width: 130px;
 		height: 15px;
 	}
+	textarea{
+		resize: none;
+		height: 30vh;
+	}
+	#btn_aceptar{
+		display: none;
+	}
+	#btn_cancelar{
+		display: none;
+	}
 </style>
 
 
 <?php	
 //----------------------------------OBTENER EL ID
-$id= $_POST["ver_id"];
+$id= $_GET["rec"];
 
-include ("../controlador/conexion_bd.php");
+include ("../controladores/conexion_bd.php");
 
 $sel = "SELECT * FROM recursos INNER JOIN direcciones ON recursos.id_rec=direcciones.id_rec WHERE recursos.id_rec='$id'";
 
@@ -32,51 +42,77 @@ $usuario = $tabla->fetch_array();
  //print_r($usuario );
 
 echo '
+<form action="../controladores/actualizar_datos.php" method="POST">
+	<div id="cuerpo" class="row">
 
-	<div id="top">
-				<div id="top-espacio"></div>
-				<div id="top-logo"></div>
-				<div id="top-name"><h2>'.$usuario[2].'</h2></div>
-				<div id="top-espacio"></div>
-			</div> 
+		<div id="datos" class="col-sm-6">
+			<div class="formCampo">
+				<div class="formIconos"><img src="svg/gear.svg"></div>
+				<label>Tipo de iniciativa:</label>
+				<input class="mod_datos" type="text" name="camp_0" value="'.$usuario["nom_rec"].'" disabled>	
+			</div>
+			<div class="formCampo">
+				<div class="formIconos"><img src="svg/globe.svg"></div>
+				<br><label>Website:</label>
+				<input class="mod_datos" type="text" name="camp_1" value="'.$usuario["web_rec"].'" disabled>
+			</div>
+			<div class="formCampo">
+				<div class="formIconos"><img src="svg/mail.svg"></div>
+				<br><label>Email:</label>
+				<input class="mod_datos" type="text" name="camp_2" value="'.$usuario["email_rec"].'" disabled>
+			</div>
+			<div class="formCampo">
+				<div class="formIconos"><img src="svg/phone.svg"></div>
+				<br><label>Telefono:</label>
+				<input class="mod_datos" type="text" name="camp_3" value="'.$usuario["tel_rec"].'" disabled>
+			</div>
+			<div class="formCampo">	
+				<div class="formIconos"><img src="svg/person.svg"></div>
+				<br><label>Contacto:</label>
+				<input class="mod_datos" type="text" name="camp_4" value="'.$usuario["cont_rec"].'" disabled>
+			</div>
+			<div class="formCampo">
+				<div class="formIconos"><img src="svg/house.svg"></div>
+				<br><label>Localizacion:</label>
+				<input class="mod_datos" type="text" name="camp_5" value="'.$usuario["direccion_dir"].'" disabled>
+		 	</div>
+		 	<div class="formCampo">
+				<div class="formIconos"><img src="svg/town.svg"></div>
+				<br><label>Poblacion:</label>
+				<input class="mod_datos" type="text" name="camp_6" value="'.$usuario["poblacion_dir"].'" disabled>
+		 	</div>
+		</div>
 
-<div id="datos" class="col-sm-6">
-	<div class="formCampo">
-		<div class="formIconos"><img src="svg/gear.svg"></div>
-		<label>Tipo de iniciativa:</label>
-		<input type="text" name="camp_0" value="'.$usuario[4].'" disabled>	
+		<div id="contenedor_mapa" class="col-sm-4" ><center>
+			<div id="mi-mapa"></div></center>
+		</div>
 	</div>
-	<div class="formCampo">
-		<div class="formIconos"><img src="svg/globe.svg"></div>
-		<br><label>Website:</label>
-		<input type="text" name="camp_1" value="'.$usuario[5].'" disabled>
+
+	<hr>
+	Descripcion:
+	<div id="desc"> 
+		<textarea class="mod_datos" style ="width: 100%" name="camp_d" disabled>'.$usuario["desc_rec"].'</textarea>
 	</div>
-	<div class="formCampo">
-		<div class="formIconos"><img src="svg/mail.svg"></div>
-		<br><label>Email:</label>
-		<input type="text" name="camp_2" value="'.$usuario[1].'" disabled>
+	<br>
+	Categorias:
+	<div id="cheks">
+';
+	$cons_cat = $con->query("SELECT * FROM detalle_recursos INNER JOIN subcategorias 
+				ON detalle_recursos.id_subcat=subcategorias.id_subcat WHERE detalle_recursos.id_rec='$id'");
+
+	while($fila= $cons_cat->fetch_array()){
+		echo'
+			<input type="checkbox" name="" disabled>'.$fila["nom_subcat"].'<br>
+		';
+	}
+
+echo'
 	</div>
-	<div class="formCampo">
-		<div class="formIconos"><img src="svg/phone.svg"></div>
-		<br><label>Telefono:</label>
-		<input type="text" name="camp_3" value="'.$usuario[7].'" disabled>
-	</div>
-	<div class="formCampo">	
-		<div class="formIconos"><img src="svg/person.svg"></div>
-		<br><label>Contacto:</label>
-		<input type="text" name="camp_4" value="'.$usuario["cont_rec"].'" disabled>
-	</div>
-	<div class="formCampo">
-		<div class="formIconos"><img src="svg/house.svg"></div>
-		<br><label>Localizacion:</label>
-		<input type="text" name="camp_5" value="'.$usuario["direccion_dir"].'" disabled>
- 	</div>
- 	<div class="formCampo">
-		<div class="formIconos"><img src="svg/town.svg"></div>
-		<br><label>Poblacion:</label>
-		<input type="text" name="camp_6" value="'.$usuario["poblacion_dir"].'" disabled>
- 	</div>
-</div>
+	<center>
+		<input id="btn_aceptar" type="submit" value="Aceptar cambios">
+		<input id="btn_cancelar" type="button" value="Cancelar" onclick="window.location.reload(true)">
+	</center>
+</form>	
 ';
 
 ?>

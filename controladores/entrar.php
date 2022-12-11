@@ -7,34 +7,29 @@ $mail = $con->real_escape_string($_POST["imail"]);
 $pass = $con->real_escape_string($_POST["ipass"]);
 
 
-$sql_comprobar = "SELECT email_rec, pass_rec, id_rec from recursos  WHERE email_rec='$mail'";
+$sql_comprobar = "SELECT * from recursos  WHERE email_rec='$mail'";
 
 $existe = $con->query($sql_comprobar);
 
 $datos=$existe->fetch_array();
 
-print_r($datos);
-echo"<br><br>";
+// print_r($datos);
+// echo"<br><br>";
 
-$bd_mail = $datos[0];
-$bd_pass = $datos[1];
+$bd_mail = $datos["email_rec"];
+$bd_pass = $datos["pass_rec"];
 
-echo"
-	$mail<br>
-	$pass<br>
-	$bd_mail<br>
-	$bd_pass<br>
-	<br><br>
-";
+// echo"
+// 	$mail<br>
+// 	$pass<br>
+// 	$bd_mail<br>
+// 	$bd_pass<br>
+// 	<br><br>
+// ";
 
 
 
 if( $mail != $bd_mail   ) {
-	// $hash = md5( rand(0,10000) );
-	// $insert="INSERT INTO recursos(email_rec,pass_rec,estado_rec, hash_rec) VALUES('$mail','$pass',1, '$hash')";
-
-
-
 
 	echo "
 		<script>
@@ -45,37 +40,6 @@ if( $mail != $bd_mail   ) {
 
 
 
-	// if($con->query($insert)){
-	// 	echo "insertado";
-	// 	$last_id = $con->insert_id;
-	// }else{
-	// 	echo "<br>erorr";
-	// }
-
-
-	// //---------------------mandar correo
-	// $para = $mail;
-	// $motivo = "Espiga | correo de verificacion";
-	// $mensaje= "		
-	// ----------------------
-	// Bienvenido a espiga
-	// ---------------------
-
-	// Pincha en el siguiente enlace 
-	// para activar tu cuenta:
-
-	// -------------------------
-	// 	<a link='http://www.espiga.com/validar.php?hash=".$hash."'>VALIDAR</a>
-	// --------------------------------------
-
-	// ";
-	// $cabeceras = 'From:noreply@yespiga.com' . "\r\n";
-
-	// mail($para, $motivo, $mensaje, $cabeceras);
-	//revisar y configurar gestor correo!!
-
-	//---------------------mandar correo
-
 }else{
 
 
@@ -83,12 +47,13 @@ if( $mail != $bd_mail   ) {
 
 
 		session_start();
-		$_SESSION["id"] = $datos[2];
+		$_SESSION["id"] = $datos["id_rec"];
+		$_SESSION["nombre"] = $datos["nom_rec"];
 
 	echo "
 		<script>
-		alert('Bienvenido ".$_SESSION['id']."');
-		window.location.href='../vistas/index.php';
+		alert('Bienvenido: ".$datos['nom_rec']."');
+		window.location.href='../vistas/index.php?rec=".$_SESSION['id']."';
 		</script>
 	";
 

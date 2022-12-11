@@ -3,6 +3,7 @@
 <?php
 
 include("head.html");
+
 ?>
 <!-- llamadas a estilos o js epecificos de la ventana en el head -->
 	<link rel="stylesheet" type="text/css" href="css/recurso.css">
@@ -51,8 +52,8 @@ include("head.html");
 
 <!--  -->
 <?php
-session_start();
-include("barra_navegacion_l.php");
+// session_start();
+include("barra_navegacion.php");
 ?>
 
 
@@ -66,7 +67,7 @@ include("barra_navegacion_l.php");
 													height: 90vh;
 													overflow: hidden">
 
-			<table id="tabla_gestion" class="display nowrap row-border compact stripe hover" style="width:100%">
+			<table id="tabla_gestion" class="display wrap row-border compact stripe hover" style="width:100%">
 				<thead>
 					<tr>
 						<td>LOGO</td>
@@ -82,23 +83,11 @@ include("barra_navegacion_l.php");
 						?>
 				</tbody>
 			</table>
-
 	
 		</div>
-		<!--	<script type="text/javascript">
-				$.post("../controlador/mostrar_recursos.php",
-					{},
-					function(mensaje){
-						// alert(mensaje);
-						$("#listado").html(mensaje);
 
-					}
 
-				);
-			</script> -->
-
-		<div id="vista" class="col-sm-8">
-		
+		<div id="vista" class="col-sm-8">	
 		</div> <!-- end vista -->
 
 

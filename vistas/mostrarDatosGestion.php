@@ -41,14 +41,14 @@ $usuario = $tabla->fetch_array();
 
 echo '
 
-	<div id="top">
-				<div id="top-espacio"></div>
-				<div id="top-logo"><img width="70px" src="../usuarios/'.$usuario["id_rec"].'/logo.png"></img></div>
-				<div id="top-name"><h2>'.$usuario[2].'</h2></div>
-				<div id="top-espacio"></div>
-			</div> 
+<div id="top">
+	<div id="top-espacio"></div>
+	<div id="top-logo"><img width="70px" src="../usuarios/'.$usuario["id_rec"].'/logo.png"></img></div>
+	<div id="top-name"><h3>'.$usuario["nom_rec"].'</h3></div>
+	<div id="top-espacio"></div>
+</div> 
 <div class="row">
-	<div id="datos" class="col-sm-6">
+	<div id="datos" class="col-sm-8">
 		<div class="formCampo">
 			<div class="formIconos"><img src="svg/gear.svg"></div>
 			<label>Tipo de iniciativa:</label>
@@ -85,25 +85,22 @@ echo '
 			<input type="text" name="camp_6" value="'.$usuario["poblacion_dir"].'" disabled>
 	 	</div>
 	</div>
-	<div id="datos" class="col-sm-5">
+	<div id="control" class="col-sm-4">
 		<center>
 			<br><br>
-			<button class="btn" id="gst_ir" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">visitar</button>
+			<a target=_blank href=../vistas/recurso.php?rec='.$usuario["id_rec"].'>
+				<button class="btn" id="gst_ir">visitar</button>
+			</a>
 			<br><br>
 			<button class="btn" id="gst_act" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">activar</button>
 			<br><br>
 			<button class="btn" id="gst_del" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">eliminar</button>
 			<br><br>
-			<label id="mostrar_accion"> ñdñ</label
+			<label id="mostrar_accion"></label
 		</center>
-
-
-
-
 	</div>
 </div>
 <div id="datos" class="col-sm-12">
-
 		<label>Descripcion:</label><br>
 			<textarea name="camp_6" disabled> '.$usuario["desc_rec"].'"</textarea>
 </div>

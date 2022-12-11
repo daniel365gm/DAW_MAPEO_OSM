@@ -10,13 +10,13 @@
 </head>
 <!--  -->
 <?php
-session_start();
-	if(isset($_SESSION["id"])){
-		include("barra_navegacion_l.php");
-	}else{
-		include("barra_navegacion.php");
-	}
-
+// session_start();
+// 	if(isset($_SESSION["id"])){
+// 		include("barra_navegacion_l.php");
+// 	}else{
+// 		include("barra_navegacion.php");
+// 	}
+	include("barra_navegacion.php");
 ?>
 
 

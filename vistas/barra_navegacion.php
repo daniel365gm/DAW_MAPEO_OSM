@@ -1,6 +1,6 @@
 
 <?php
-
+	session_start();
 	if(isset($_SESSION["id"])){
 
 
@@ -17,10 +17,10 @@
 	</button> 
 	<div class="collapse navbar-collapse" id="navbar1"> 
 		<div class="navbar-nav"> 
-			<a class="nav-item nav-link" href="recurso.php"></a>   <!--  active para mas blanco -->
+			<a class="nav-item nav-link" href="recurso.php?rec=<?php echo $_SESSION["id"]; ?>">Mi recurso</a>   <!--  active para mas blanco -->
 			<!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a>  -->
 			<a class="nav-item nav-link" href="#"></a>  
-			<!-- <a class="nav-item nav-link" href="gestion.php">Gestion</a>   -->
+			<a class="nav-item nav-link" href="gestion.php">Gestion</a>  
 		</div>
 		<div class="navbar-nav ml-auto" id="navbar2">
 			<a class="nav-item nav-link fab" href="" target="_blank">
@@ -36,9 +36,7 @@
 			<li class="nav-item dropleft" href="#" data-toggle="modal">
 
 		        <a class="nav-link dropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		        <?php
-					echo $_SESSION["id"];
-				?>
+		        	<img width="25" src="../usuarios/<?php echo $_SESSION["id"]; ?>/logo.png">
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 		          <a class="dropdown-item" href="#">Action</a>
@@ -51,10 +49,6 @@
 		</div>
 	</div>
 </nav> 
-
-
-
-
 
 <div class="modal fade" id="x_login">
 	<div class= "modal-dialog modal-dialog-centered modal-sm">

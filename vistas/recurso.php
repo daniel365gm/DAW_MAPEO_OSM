@@ -6,26 +6,41 @@ include("head.html");
 ?>
 <!-- llamadas a estilos o js epecificos de la ventana en el head -->
 	<link rel="stylesheet" type="text/css" href="./css/recurso.css">
+	<style type="text/css">
+		#img_gear:hover{
+ 			content: url("img/engranaje2.png");
+		}
+	</style>
 </head>
 <!--  -->
 
 
 <?php
-	session_start();
-	if(isset($_SESSION["id"])){
-		include("barra_navegacion_l.php");
-	}else{
-		include("barra_navegacion.php");
-	}
 
-	$recurso = $_GET["rec"];
+	include("barra_navegacion.php");
+	include("../controladores/conexion_bd.php");
+	$recurso_id = $_GET["rec"];
+
+	$sql_rec = "SELECT * FROM recursos WHERE id_rec='$recurso_id'";
+	$consulta = $con->query($sql_rec);
+	$usuario = $consulta->fetch_array();
 
 	echo'
 	<div id="top">
 		<div id="top-espacio"></div>
-		<div id="top-logo"><img src="../usuarios/'.$recurso.'/logo.png"> </div>
-		<div id="top-name"><h2>'.$recurso.'</h2></div>
-		<div id="top-espacio"></div>
+		<div id="top-logo"><img src="../usuarios/'.$recurso_id.'/logo.png"> </div>
+		<div id="top-name"><h2>'.$usuario["nom_rec"].'</h2></div>
+		<div id="top-espacio">
+		';
+
+		if(isset($_SESSION["id"]) && $_SESSION["id"]== $recurso_id){
+
+				echo'<label id="btn_gear" onclick="cambio_editar();"><img id="img_gear" width="30" src="img/engranaje.png"></label>';
+
+			}
+
+	echo'
+		</div>
 	</div> 
 	';
 
@@ -34,106 +49,90 @@ include("head.html");
 
 <div id="med" class="container">
 	<!--  FORM  -->
-	<form action="" method="POST">
-		<div id="cuerpo" class="row">
-
-			<?php
-			if(isset($_GET["id"])){
-				include("verDatos.php");	
-				$modo_ver=true;
-
-			}else{
-				include ("datos.html");
-				$modo_ver=false;
-			}
-			?>
-
-			<div id="contenedor_mapa" class="col-sm-4" ><center>
-				<div id="mi-mapa"></div></center>
-			</div>
-		</div>
-
-
-		<hr>
-		Descripcion:
-		<div id="desc"> 
-			<textarea style ="width: 100%" name="camp_d">descrripcion de esto
-			</textarea>
-		</div>
-		<br>
-		Categorias:
-		<div id="cheks">
-			<input type="checkbox" name="">Agricultura<br>
-			<input type="checkbox" name="">Pecuaria<br>
-		</div>
-
-	</form>	
-
+	<?php
+		include("verDatos.php");	
+	?>
 	<!-- END FORM  -->
 	<br>
 
-	<div id="gal">
-		<div id="show"></div>
-		<center>
-			<form  enctype="multipart/form-data">
-				<input  style="width: 75%; display: inline-flex;" type="file" id="i_archivo" class="form-control">
-				<input  style="display: inline" type="button" class="btn btn-warning" value="enviar" onclick="guardar_foto();">
-			</form>
-		</center>
-	</div>
+	<?php 
+	if(isset($_SESSION["id"]) && $_SESSION["id"]== $recurso_id){
+
+	?>
+	<!--  -->
+		<!-- <center>modificar datos</button></center> -->
+		<script type="text/javascript">
+			function cambio_editar(){
+				$(".mod_datos").each(function() {
+				    $( this ).prop('disabled', false);
+				  });
+				$("#btn_aceptar").show(500);
+				$("#btn_cancelar").show(500);
+			}
+		</script>
+
+<!--  -->
+
+		<div id="gal">
+			<center>
+				<form  enctype="multipart/form-data">
+					<input  style="width: 75%; display: inline-flex;" type="file" id="i_archivo" class="form-control">
+					<input  style="display: inline" type="button" class="btn btn-warning" value="enviar" onclick="guardar_foto();">
+				</form>
+			</center>
+		</div>
 
 		<script type="text/javascript">
+			function guardar_foto(){
 
-		function guardar_foto(){
+				// var nombre= $("input[type=file]").val();
+				// var final =  nombre.split('\\').pop();
+				// alert(final);
 
-			// var nombre= $("input[type=file]").val();
-			// var final =  nombre.split('\\').pop();
-			// alert(final);
+				var archivo = $("input[type=file]")[0].files[0];
 
-			var archivo = $("input[type=file]")[0].files[0];
-
-
-			// $("div#show").html("");
-			var formulario = new FormData();
-			formulario.append("fichero",archivo);
+				// $("div#show").html("");
+				var formulario = new FormData();
+				formulario.append("fichero",archivo);
 
 
-			$.ajax({
-				url: "../controladores/editorGaleria.php",
-				type: "POST",
-				data: formulario,
-				contentType: false,
-				processData: false,
-				success: function(retorno){
-					$("div#show").html(retorno);
-					$("#i_archivo").val("");
-					}
-				});
+				$.ajax({
+					url: "../controladores/editorGaleria.php",
+					type: "POST",
+					data: formulario,
+					contentType: false,
+					processData: false,
+					success: function(retorno){
+						$("div#show").html(retorno);
+						$("#i_archivo").val("");
+						}
+					});
+				}
+		</script>
 
-
-			}
-			</script>
+	<?php 
+	}
+	?>
 
 	<div id="galgal">
-			<?php
-				function mostrar_galeria(){
-					$id = "2";
-				    $directory="../usuarios/$id/galeria";
-				    $dirint = dir($directory);
-				    while (($archivo = $dirint->read()) !== false)
-				    {
-				    	if ($archivo == "."  || $archivo == ".."){
-				    	}else{
-				        	echo "<image class='gal' src='$directory/$archivo'></image>";
-				        }
-				    }
-				    $dirint->close();
-				 }
-				 mostrar_galeria();
-			?>
+		<?php
+			function mostrar_galeria(){
+				$id = "2";
+			    $directory="../usuarios/$id/galeria";
+			    $dirint = dir($directory);
+			    while (($archivo = $dirint->read()) !== false)
+			    {
+			    	if ($archivo == "."  || $archivo == ".."){
+			    	}else{
+			        	echo "<image class='gal' src='$directory/$archivo'></image>";
+			        }
+			    }
+			    $dirint->close();
+			 }
+			 mostrar_galeria();
+		?>
 	</div>
-
-
+</div>
 
 
 

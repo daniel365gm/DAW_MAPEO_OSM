@@ -27,7 +27,7 @@
 			<li class="nav-item dropleft" href="#" data-toggle="modal">
 
 		        <a class="nav-link dropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		         				<?php
+		         <?php
 					echo $_SESSION["id"];
 				?>
 		        </a>
@@ -42,10 +42,6 @@
 		</div>
 	</div>
 </nav> 
-
-
-
-
 
 <div class="modal fade" id="x_login">
 	<div class= "modal-dialog modal-dialog-centered modal-sm">
