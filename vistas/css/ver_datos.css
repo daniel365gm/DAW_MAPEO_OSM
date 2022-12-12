@@ -1,0 +1,32 @@
+.formCampo{
+	border: 1px solid red;
+	display: flex;
+	flex-flow: wrap;
+}
+.formIconos{
+	 border: 1px solid blue;
+	 width: 22px
+}
+div#datos label{
+	width: 130px;
+	height: 15px;
+}
+label.tipo_categoria{
+	border-bottom: 1px solid black;
+}
+textarea{
+	resize: none;
+	height: 30vh;
+}
+#btn_actualizar_datos, #btn_cancelar_datos ,#btn_actualizar_categorias,  #btn_cancelar_categorias{
+	display: none;
+}
+.categoria{
+	padding: 30px;
+}
+.subcategorias{
+	padding-left: 30px;
+}
+#gear_categ{
+	margin-left: 80%;
+}

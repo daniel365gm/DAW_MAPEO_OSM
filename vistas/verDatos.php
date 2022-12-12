@@ -1,32 +1,4 @@
-<link rel="stylesheet" type="text/css" href="">
-<style type="text/css">
-	.formCampo{
-		border: 1px solid red;
-		display: flex;
-		flex-flow: wrap;
-
-
-	}
-	.formIconos{
-		 border: 1px solid blue;
-		 width: 22px
-	}
-	label{
-		width: 130px;
-		height: 15px;
-	}
-	textarea{
-		resize: none;
-		height: 30vh;
-	}
-	#btn_aceptar{
-		display: none;
-	}
-	#btn_cancelar{
-		display: none;
-	}
-</style>
-
+<link rel="stylesheet" type="text/css" href="css/ver_datos.css">
 
 <?php	
 //----------------------------------OBTENER EL ID
@@ -89,30 +61,77 @@ echo '
 	</div>
 
 	<hr>
-	Descripcion:
+	<h5>Descripcion:</h5>
 	<div id="desc"> 
 		<textarea class="mod_datos" style ="width: 100%" name="camp_d" disabled>'.$usuario["desc_rec"].'</textarea>
 	</div>
 	<br>
-	Categorias:
-	<div id="cheks">
-';
-	$cons_cat = $con->query("SELECT * FROM detalle_recursos INNER JOIN subcategorias 
-				ON detalle_recursos.id_subcat=subcategorias.id_subcat WHERE detalle_recursos.id_rec='$id'");
 
-	while($fila= $cons_cat->fetch_array()){
-		echo'
-			<input type="checkbox" name="" disabled>'.$fila["nom_subcat"].'<br>
-		';
-	}
-
-echo'
-	</div>
 	<center>
-		<input id="btn_aceptar" type="submit" value="Aceptar cambios">
-		<input id="btn_cancelar" type="button" value="Cancelar" onclick="window.location.reload(true)">
+		<input id="btn_actualizar_datos" type="submit" value="Aceptar cambios">
+		<input id="btn_cancelar_datos" type="button" value="Cancelar" onclick="window.location.reload(true)">
 	</center>
 </form>	
 ';
 
+if(isset($_SESSION["id"]) && $_SESSION["id"]== $recurso_id){
+
+			echo'
+				<br>	
+				<div class="row">
+					<h4>Categorias:</h4>
+					<label id="gear_categ" onclick="activar_editar(this.id);"><img id="img_gear" width="30" src="img/engranaje.png"></label>
+				</div>
+
+				';
+
+			}
+
+echo"
+<form action='' method='POST'>
+<div id='cheks' class='row'>
+";
+
+	$categorias = $con->query("SELECT * FROM categorias");
+	foreach($categorias as $row){
+	    $cat = stripslashes($row['nom_cat']);
+	    echo "
+	    <div class='box col-sm-4 categoria'>
+	    	<label class='tipo_categoria'>$cat:</label><br>
+	    	<div class='subcategorias'>
+	    ";
+
+	    $id= $row["id_cat"];
+	    $consultar_subcat ="SELECT * from subcategorias where id_cat='$id'";
+		$subcategorias= $con->query($consultar_subcat);
+
+		foreach($subcategorias as $row2){
+
+		   $subcat = stripslashes($row2['nom_subcat']);
+		   $subid  = stripslashes($row2['id_subcat']);
+
+
+			echo'
+			<input class="form-check-input mod_cat" type="checkbox" name="'.$subid.'" value="'.$subcat.'" disabled>
+			<label class="form-check-label">'.$subcat.'</label><br>
+			';
+		}
+
+		echo'</div>
+		</div>
+		';
+
+	}
+
+echo'
+	</div>
+	<br>
+	<center>
+		<input id="btn_actualizar_categorias" type="submit" value="actualizar">
+		<input id="btn_cancelar_categorias" type="button" value="Cancelar" onclick="window.location.reload(true)">
+	</center>
+</form>';
+
+
+$con->close();
 ?>

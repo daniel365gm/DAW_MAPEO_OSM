@@ -64,3 +64,7 @@ body{
 /* #contenedor_mapa{
  	height: 300px;
  }*/
+
+ #img_gear:hover{
+		content: url("img/engranaje2.png");
+}

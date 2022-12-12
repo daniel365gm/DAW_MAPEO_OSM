@@ -7,9 +7,8 @@
 	// $apellido=	$datos[1];
 
 
-	// session_start();
-	//$id= $_SESSION["id"];
-	$id="6";
+	session_start();
+	$id= $_SESSION["id"];
 
 
 
