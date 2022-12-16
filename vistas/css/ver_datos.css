@@ -1,10 +1,10 @@
 .formCampo{
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	display: flex;
 	flex-flow: wrap;
 }
 .formIconos{
-	 border: 1px solid blue;
+	 /*border: 1px solid blue;*/
 	 width: 22px
 }
 div#datos label{
@@ -30,3 +30,4 @@ textarea{
 #gear_categ{
 	margin-left: 80%;
 }
+

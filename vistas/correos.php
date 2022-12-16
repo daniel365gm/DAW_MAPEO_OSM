@@ -33,11 +33,9 @@
 	include("barra_navegacion.php");
 ?>
 
-<div id="med" class="container" style="border:2px solid blue;margin-top: 58px;">
+<div id="med" class="container" style="margin-top: 58px;">
 	
-	<div id="listado" class="col-sm-12" style="border-right:2px solid blue;
-													height: 90vh;
-													overflow: hidden">
+	<div id="listado" class="col-sm-12" style="height: 90vh;overflow: hidden">
 			<table id="tabla_correos" class="display wrap row-border compact stripe hover" style="width:100%">
 				<thead>
 					<tr>

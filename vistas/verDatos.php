@@ -55,8 +55,13 @@ echo '
 		 	</div>
 		</div>
 
-		<div id="contenedor_mapa" class="col-sm-4" ><center>
+		<div id="contenedor_mapa" class="col-sm-6" ><center>
 			<div id="mi-mapa"></div></center>
+			<script src="js/ctr_mapa_index.js"></script>
+			<script>
+				let texto_recurso="'.$usuario["direccion_dir"].' '.$usuario["num_dir"].' ";
+				pin_mark('.$usuario["lat_dir"].','.$usuario["lon_dir"].',"'.$usuario["nom_rec"].'",texto_recurso);
+			</script>
 		</div>
 	</div>
 
@@ -87,6 +92,9 @@ if(isset($_SESSION["id"]) && $_SESSION["id"]== $recurso_id){
 
 			}
 
+
+
+// Formulario con las categorias disponibles
 echo"
 <form action='' method='POST'>
 <div id='cheks' class='row'>
@@ -109,7 +117,6 @@ echo"
 
 		   $subcat = stripslashes($row2['nom_subcat']);
 		   $subid  = stripslashes($row2['id_subcat']);
-
 
 			echo'
 			<input class="form-check-input mod_cat" type="checkbox" name="'.$subid.'" value="'.$subcat.'" disabled>

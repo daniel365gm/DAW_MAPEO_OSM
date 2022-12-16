@@ -45,11 +45,16 @@ include("head.html");
 
 
 <div id="med" class="container">
-	<!--  FORM  -->
+	<!--  Formulario con los datos del usuario  -->
 	<?php
 		include("verDatos.php");	
 	?>
 	<!-- END FORM  -->
+	
+
+
+
+
 	<br>
 
 	<?php 

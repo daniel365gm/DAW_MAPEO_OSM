@@ -15,49 +15,7 @@
 
 
 <div id ="mi-mapa"></div>
-
-<!--  
-<input id="lat" type="" name="" >
-<input id="lon" type="" name="" >
-
-<div id="status" type="" name="" ></div>
-<button id="subir">up</button>
-	<script type="text/javascript">
-			let peticion;
-			var slat = $("#lat").val();
-			var slon =$("#lon").val();
-			const iniciar = () => {
-
-				peticion = new XMLHttpRequest();
-				peticion.open('GET', "cnt/guardar_coordenadas.php?c1="+slat+"&c2="+slon); 
-				peticion.send();
-
-
-				
-				//guardar coordenadas
-				peticion.open('GET', "cnt/guardar_coordenadas.php?c1="+slat+"&c2="+slon); 
-				peticion.send();
-				peticion.addEventListener("load", cargada);
-			}
-
-			const cargada = () => {
-				
-				// let datos = peticion.responseText;
-				// document.getElementById("status").innerHTML = datos;
-			}
-			var btnSubir = document.getElementById("subir");
-			btnSubir.addEventListener("click", iniciar, false);
-		</script>
-
--->
-
-<script src="../controladores/ctr_mapa_index.js"></script>
-
-
-<?php 
-	// include("../controladores/listado_coordenadas.php");	
- ?>
-
+<script src="js/ctr_mapa_index.js"></script>
 
 
 <!-- Menu izquierda  -->
@@ -85,11 +43,6 @@
 	</div>
 
 	<div id="in_listado">
-		<input id="inp_buscar btn-info" type="text" name="buscador">
-		<button id="btn_lupa" onclick="">
-					<img width="25" src="img/buscar.ico">
-		</button>
-		
 
 		<?php
 		include("../controladores/mostrarResumen.php");

@@ -2,7 +2,7 @@
 //############# establecer las opciones del mapa
 var opcionesMapa = {
 	center: [43.08, -8.37],
-	zoom: 8,
+	zoom: 7,
 	attributionControl:false
 };
  
@@ -19,22 +19,8 @@ mapa1.addLayer(capa1);
 //##############################
 
 
-
-
-
-//##############################################
 mapa1.zoomControl.setPosition('topright');
-// //------boton de zoom
-// L.control.zoom({
-//      position:'bottomright'
-// }).addTo(mapa1);
-// //-----
 
-
-
-
-
-//##############################################
 //###### elegir o modificar el icono de posicion
 var opcionesIcono={
 	iconUrl: 'img/icono1.png',
@@ -45,7 +31,7 @@ var opcionesIcono={
 
 var iconoTipo1 = L.icon(opcionesIcono);
 //##############################
-//##############################################
+
 
 
 
@@ -117,16 +103,16 @@ function pin_mark(longM1,latM1,nombre,texto){
 // 		});
 
 
-var nota1= L.control.attribution({prefix: "you clicked"});
-nota1.addTo(mapa1);
+// var nota1= L.control.attribution({prefix: "you clicked"});
+// nota1.addTo(mapa1);
 
-mapa1.on('click',function(e){
-			nota1.remove();
-			var coord=e.latlng.toString().split(',');
-			var lat=coord[0].split('(');
-			var long=coord[1].split(')');
-			nota1 = L.control.attribution({prefix: "Click en LAT: "+ lat[1]+" and LONG:"+long[0]}).addTo(mapa1);
-		});
+// mapa1.on('click',function(e){
+// 			nota1.remove();
+// 			var coord=e.latlng.toString().split(',');
+// 			var lat=coord[0].split('(');
+// 			var long=coord[1].split(')');
+// 			nota1 = L.control.attribution({prefix: "Click en LAT: "+ lat[1]+" and LONG:"+long[0]}).addTo(mapa1);
+// 		});
 
 
 

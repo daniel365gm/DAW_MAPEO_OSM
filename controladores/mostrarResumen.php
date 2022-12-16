@@ -1,25 +1,4 @@
-<style type="text/css">
-	img#logo_resumen{
-		width: 50px;
-		height: 50px;
-	}
-	textarea{
-		width: 100%;
-		/*height: 10vh;*/
-		resize: none;
-	}
-	.resumen-modal{
-		padding: 0.5em;
-	}
-	.btn_resumen{
-		margin-bottom: 2px;
-		background: mintcream;
-		border-radius: 10px 10px 10px 10px;
-	}
-	#cabecera_resumen{
-		margin-bottom: 5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="css/menu_lateral.css">
 
 
 <?php
@@ -27,6 +6,9 @@
 include("conexion_bd.php");
 $lista = $con->query("SELECT * FROM recursos INNER JOIN direcciones ON recursos.id_rec=direcciones.id_rec WHERE estado_rec='1'");
 
+
+//Poblar el menu lateral con los usuarios mostrando un pequeño resumen, y
+//poner las marcas en el mapa por cada uno.
 while($row= $lista->fetch_array()){
 	echo'
 		<button id="'.$row["id_rec"].'"class="btn_resumen" onclick="mostrar_recurso(this.id,'.$row["lat_dir"].','.$row["lon_dir"].')">
@@ -39,7 +21,7 @@ while($row= $lista->fetch_array()){
 							<img id="logo_resumen" src="../usuarios/'.$row["id_rec"].'/logo.png"></img>
 						</div>
 						<div class="col-8">
-							<a target="_blank" href="http://www.google.com">
+							<a target="_blank" href="../vistas/recurso.php?rec='.$row["id_rec"].'">
 								<label id="nombre_resumen">'.$row["nom_rec"].'</label>
 							</a>
 						</div>
@@ -54,7 +36,7 @@ while($row= $lista->fetch_array()){
 
 
 		<script>
-				var texto_pop = "<a target=_blank href=../vistas/recurso.php?rec='.$row["id_rec"].'>'.$row["nom_rec"].'</a> ";
+				var texto_pop = "<center><img src=../usuarios/'.$row["id_rec"].'/logo.png></center><br><a target=_blank href=../vistas/recurso.php?rec='.$row["id_rec"].'>'.$row["nom_rec"].'</a>";
 				pin_mark('.$row["lat_dir"].','.$row["lon_dir"].',"'.$row["nom_rec"].'",texto_pop);
 		</script>
 			';

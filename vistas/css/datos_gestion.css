@@ -1,0 +1,21 @@
+.formCampo{
+	display: flex;
+	flex-flow: wrap;
+
+
+}
+.formIconos{
+	 width: 22px
+}
+label{
+	width: 130px;
+	height: 15px;
+}
+textarea{
+	width: 100%;
+	height: 16vh;
+	resize: none;
+}
+.btn{
+	background-color: lightgrey ;	
+}

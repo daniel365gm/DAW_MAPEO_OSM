@@ -1,30 +1,5 @@
-<link rel="stylesheet" type="text/css" href="">
-<style type="text/css">
-	.formCampo{
-		border: 1px solid red;
-		display: flex;
-		flex-flow: wrap;
 
-
-	}
-	.formIconos{
-		 border: 1px solid blue;
-		 width: 22px
-	}
-	label{
-		width: 130px;
-		height: 15px;
-	}
-	textarea{
-		width: 100%;
-		height: 16vh;
-		resize: none;
-	}
-	.btn{
-		background-color: lightgrey ;	
-	}
-</style>
-
+<link rel="stylesheet" type="text/css" href="css/datos_gestion.css">
 
 <?php	
 //----------------------------------OBTENER EL ID

@@ -1,24 +1,14 @@
 body{
 	background-color: #e9ebee;
-	/*lightgrey;*/
 }
-
- div#mi-mapa{
- 	width:250px; 
- 	height: 250px;
- }
 
  div#top{
  	margin-top: 57px;
  	width: 100%;
  	height: 70px;
- 	border: 1px solid black;
+ 	background-color: lightgray;
  	display: flex;
  	align-items: center;
-/*
-	background-color: grey;
- 	position:fixed;
-	z-index: 1030;*/
  }
  div#top-espacio{
  	flex:0.5;
@@ -27,7 +17,6 @@ body{
  	height:100%;
  	width: 70px;
  	margin-right: 2%;
- 	border: 1px solid red;
  }
  div#top-name{
  	flex:1;
@@ -40,31 +29,35 @@ body{
  div#cuerpo{
  	display: flex;
  	align-items: center;
- 	border: 1px solid black;
  }
  div#datos{
  	flex: 1;
- 	border: 1px solid black;
  }
- div#mi-mapa{
- 	flex:1;
- }
+
  div#cheks{
- 	border: 1px solid black;
+ 	border-top: 1px solid black;
  }
  div#desc{
  	border: 1px solid black;
 	word-break: break-word;
  }
  img.gal{
- 	/*flex:1;*/
  	width: 200px;
  }
 
-/* #contenedor_mapa{
- 	height: 300px;
- }*/
 
  #img_gear:hover{
 		content: url("img/engranaje2.png");
+}
+
+
+ div#mi-mapa{
+ 	height: 65vh;
+ 	max-height: 350px;
+
+}
+#listado{
+	border-right:2px solid blue;
+	height: 90vh;
+	overflow: hidden
 }

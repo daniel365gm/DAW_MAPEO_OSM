@@ -1,30 +1,18 @@
 #listado{
 	width: 300px;
 	height: 50px;
-	/*height: 90vh;*/
-	/*border:1px solid blue;*/
 	margin-left: 10px;
 	display: inline;
 	top:10%;
-	/*background-color: #e9ebee;*/
 	padding-top: 10px;
 	z-index: 400;
+}
 
-	
-	/*scroll-behavior: none;*/
-	/*overflow: hidden;*/
-}
-#inp_buscar{
-	/*width: 70%;*/
-	/*display: none;*/
-}
 #in_listado{
 	background: lightblue;
-	/*opacity: 0.5;*/
 	display: none;
 	height: 100%;
 	overflow: scroll;
-	/*overflow: hidden;*/
 	padding-top: 5px;
 	padding-bottom: 50px;
 	border: 1px solid blue;
