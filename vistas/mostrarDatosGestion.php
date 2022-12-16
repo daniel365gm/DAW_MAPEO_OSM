@@ -89,12 +89,12 @@ echo '
 		<center>
 			<br><br>
 			<a target=_blank href=../vistas/recurso.php?rec='.$usuario["id_rec"].'>
-				<button class="btn" id="gst_ir">visitar</button>
+				<button class="btn-info" id="gst_ir">visitar</button>
 			</a>
 			<br><br>
-			<button class="btn" id="gst_act" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">activar</button>
+			<button class="btn-warning" id="gst_act" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">activar</button>
 			<br><br>
-			<button class="btn" id="gst_del" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">eliminar</button>
+			<button class="btn-danger" id="gst_del" onclick="accion_gestion(this.id,'.$usuario["id_rec"].')">eliminar</button>
 			<br><br>
 			<label id="mostrar_accion"></label
 		</center>

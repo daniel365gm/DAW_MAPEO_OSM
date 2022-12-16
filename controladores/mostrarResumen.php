@@ -5,7 +5,7 @@
 	}
 	textarea{
 		width: 100%;
-		height: 10vh;
+		/*height: 10vh;*/
 		resize: none;
 	}
 	.resumen-modal{
@@ -13,6 +13,11 @@
 	}
 	.btn_resumen{
 		margin-bottom: 2px;
+		background: mintcream;
+		border-radius: 10px 10px 10px 10px;
+	}
+	#cabecera_resumen{
+		margin-bottom: 5px;
 	}
 </style>
 
@@ -20,7 +25,7 @@
 <?php
 
 include("conexion_bd.php");
-$lista = $con->query("SELECT * FROM recursos INNER JOIN direcciones ON recursos.id_rec=direcciones.id_rec");
+$lista = $con->query("SELECT * FROM recursos INNER JOIN direcciones ON recursos.id_rec=direcciones.id_rec WHERE estado_rec='1'");
 
 while($row= $lista->fetch_array()){
 	echo'
@@ -29,18 +34,19 @@ while($row= $lista->fetch_array()){
 			
 				<div class="columns">
 				
-					<div class="row">
-						<div class="col-6">
+					<div class="row" id="cabecera_resumen">
+						<div class="col-2">
 							<img id="logo_resumen" src="../usuarios/'.$row["id_rec"].'/logo.png"></img>
 						</div>
-						<div class="col-4">
-							<label id="nombre_resumen">'.$row["nom_rec"].'sssss</label>
+						<div class="col-8">
+							<a target="_blank" href="http://www.google.com">
+								<label id="nombre_resumen">'.$row["nom_rec"].'</label>
+							</a>
 						</div>
 					</div>
 			
 					<div class="col-12">
-						<label>'.$row["tipo_rec"].'</label>
-						<textarea>'.$row["desc_rec"].'</textarea>
+						<textarea id="descripcion_resumen" disabled>'.$row["desc_rec"].'</textarea>
 					</div>
 				</div>
 			</div>

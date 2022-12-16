@@ -6,16 +6,10 @@
 ?>
 <!-- llamadas a estilos o js epecificos de la ventana en el head -->
 	<link rel="stylesheet" type="text/css" href="./css/listado_recursos.css">
-	<!-- <script src="../controladores/control_mapa_class.js"></script> -->
+	
 </head>
 <!--  -->
 <?php
-// session_start();
-// 	if(isset($_SESSION["id"])){
-// 		include("barra_navegacion_l.php");
-// 	}else{
-// 		include("barra_navegacion.php");
-// 	}
 	include("barra_navegacion.php");
 ?>
 
@@ -92,11 +86,10 @@
 
 	<div id="in_listado">
 		<input id="inp_buscar btn-info" type="text" name="buscador">
-		<button id="" onclick="">
+		<button id="btn_lupa" onclick="">
 					<img width="25" src="img/buscar.ico">
 		</button>
-		<!-- <button id="btn_cerrar_listado" onclick="m_o2()">X</button> -->
-		<label>Resultados:</label>
+		
 
 		<?php
 		include("../controladores/mostrarResumen.php");
@@ -107,14 +100,6 @@
 <!--  -->
 
 
-
-
 <?php
 include("end_body.html");
-
-
 ?>
-
-
-
-</html>

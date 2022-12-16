@@ -1,8 +1,7 @@
 
 <?php
 	session_start();
-	if(isset($_SESSION["id"])){
-
+	if( isset($_SESSION["id"]) || isset($_SESSION["id_adm"]) ){
 
 ?>
 
@@ -16,11 +15,21 @@
 		<span class="navbar-toggler-icon"></span> 
 	</button> 
 	<div class="collapse navbar-collapse" id="navbar1"> 
-		<div class="navbar-nav"> 
-			<a class="nav-item nav-link" href="recurso.php?rec=<?php echo $_SESSION["id"]; ?>">Mi recurso</a>   <!--  active para mas blanco -->
-			<!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a>  -->
-			<a class="nav-item nav-link" href="#"></a>  
-			<a class="nav-item nav-link" href="gestion.php">Gestion</a>  
+		<div class="navbar-nav">
+			<a class="nav-item nav-link" href="#"></a> 
+			<?php 
+			if(isset($_SESSION["id"])){
+				echo'<a class="nav-item nav-link" href="recurso.php?rec='.$_SESSION["id"].'">Mi recurso</a>';
+			}
+			if(isset($_SESSION["id_adm"])){
+				echo'
+					<a class="nav-item nav-link" href="gestion.php">Gestion</a>
+					<a class="nav-item nav-link" href="#"></a> 
+					<a class="nav-item nav-link" href="correos.php">Correos</a> 
+
+				';
+			}
+			?>
 		</div>
 		<div class="navbar-nav ml-auto" id="navbar2">
 			<a class="nav-item nav-link fab" href="" target="_blank">
@@ -28,7 +37,7 @@
 				  	<path d="M16 8.049c0-180.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
 				</svg>
 			</a> 
-			<a class="nav-item nav-link" href="#">
+			<a class="nav-item nav-link" href="contacto.php">
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 				  	<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 				</svg>
@@ -36,11 +45,16 @@
 			<li class="nav-item dropleft" href="#" data-toggle="modal">
 
 		        <a class="nav-link dropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		        	<img width="25" src="../usuarios/<?php echo $_SESSION["id"]; ?>/logo.png">
+		        	<?php 
+					if(isset($_SESSION["id"])){
+						echo'<img width="25" src="../usuarios/'.$_SESSION["id"].'/logo.png">';
+					}
+					if(isset($_SESSION["id_adm"])){
+						echo'<img width="25" src="img/logo.png">';
+					}
+					?>
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="#">Action</a>
-		          <a class="dropdown-item" href="#">Another action</a>
 		          <div class="dropdown-divider"></div>
 		          <a class="dropdown-item link" href="#" data-toggle="modal" data-target="#x_login">cerrar sesion</a>
 		        </div>
@@ -91,7 +105,7 @@
 	</button> 
 	<div class="collapse navbar-collapse" id="navbar1"> 
 		<div class="navbar-nav"> 
-			<a class="nav-item nav-link" href="recurso.php"></a>   <!--  active para mas blanco -->
+			<a class="nav-item nav-link" href="#"></a>   <!--  active para mas blanco -->
 			<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#v_reg">Inscribirse</a> 
 			<!-- <a class="nav-item nav-link" href="gestion.php">Gestion</a>   -->
 		</div>
@@ -101,7 +115,7 @@
 				  	<path d="M16 8.049c0-180.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
 				</svg>
 			</a> 
-			<a class="nav-item nav-link" href="#">
+			<a class="nav-item nav-link" href="contacto.php">
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 				  	<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 				</svg>
@@ -133,24 +147,21 @@
 							    		class="form-control" 
 							    		id="iIniciativa" 
 							    		name="inic"
-							    		placeholder="Empresa / Recurso" required
-							    		value="inic1">
-							    </div>
-							    <div class="form-group">	
+							    		placeholder="Empresa / Recurso" required>
+							</div>
+							<div class="form-group">	
 							    <input type="text" 
 							    		class="form-control" 
 							    		id="iNombre" 
 							    		name="nombre" 
-							    		placeholder="Nombre persona de contacto" required
-							    		value="paco">
+							    		placeholder="Nombre persona de contacto" required>
 							    <input type="text" 
 							    		class="form-control" 
 							    		id="iTelefono" 
 							    		name="tel" 
 							    		pattern="[0-9]{9}" 
 							    		title="Telefono de 9 cifras"
-							    		placeholder="Telefono de contacto" required
-							    		value="989898989">
+							    		placeholder="Telefono de contacto" required>
 							    <input type="text" 
 							    		class="form-control" 
 							    		id="iWeb" 
@@ -162,8 +173,7 @@
 							    		class="form-control" 
 							    		id="iCalle" 
 							    		name="calle"
-							    		placeholder="Calle" required
-							    		value="casa2">
+							    		placeholder="Calle" required>
 							    <input type="text" 
 							    		id="iNumero" 
 							    		name="num"
@@ -172,8 +182,7 @@
 							    <input type="text" 
 							    		id="iPoblacion" 
 							    		name="pob"
-							    		placeholder="Poblacion" required
-							    		value="madrid">
+							    		placeholder="Poblacion" required>
 							</div>
 
 						  	<div class="form-group">	
@@ -185,16 +194,14 @@
 							    		aria-describedby="emailHelp" 
 							    		pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
 							    		title="Correo con formato xxxx@xxxxx.xxx"
-							    		placeholder="Correo electronico" required
-							    		value="xsadasda@ss.xx">
+							    		placeholder="Correo electronico" required>
 
-						    	<input type="text" 
+						    	<input type="password"
 						    		minlength="8"
 						    		class="form-control" 
 						    		id="iPassword"
 						    		name="pass" 
-						    		placeholder="Contraseña para esta web" required
-						    		value="ñkjñfalkjdsfñsa">
+						    		placeholder="Contraseña para esta web" required>
 						  	</div>
 
 
@@ -295,8 +302,7 @@
 						    		id="inputEmail" 
 						    		name="imail"
 						    		aria-describedby="emailHelp" 
-						    		placeholder="Enter email"
-						    		value="asdfa@asdfa">
+						    		placeholder="Correo">
 						    
 							<!-- 	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 						</div>
@@ -306,7 +312,7 @@
 					    		class="form-control" 
 					    		id="inputPassword"
 					    		name="ipass" 
-					    		placeholder="Password">
+					    		placeholder="Contraseña">
 					  	</div>
 					 	<button id="subm_log" type="submit" class="btn btn-primary float-right">Entrar</button>
 					</form>

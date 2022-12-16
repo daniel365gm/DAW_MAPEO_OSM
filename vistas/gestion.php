@@ -1,17 +1,16 @@
 <!doctype html>
 <html lang="es">
+<head>
 <?php
-
 include("head.html");
 
 ?>
 <!-- llamadas a estilos o js epecificos de la ventana en el head -->
-	<link rel="stylesheet" type="text/css" href="css/recurso.css">
-	<!-- htmx -->
-	<!-- <script src="https://unpkg.com/htmx.org@1.8.4"></script> -->
+	<link rel="stylesheet" type="text/css" href="./css/recurso.css">
+	<!-- datatables -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-	  
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" 
+			src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 	<script type="text/javascript">
 		$(document).ready( function () {
 			var data = []
@@ -25,40 +24,25 @@ include("head.html");
 		        // scrollCollapse: true,
 				fixedHeader: true,
 
-
-
 		    });
-		    $(".selectAll").on( "click", function(e) {
-		        if ($(this).is( ":checked" )) {
-		          DT1.rows({page:'current'}  ).select();        
-		        } else {
-		          DT1.rows({page:'current'}  ).deselect(); 
-		        }
-		    });
-
 		});
-	</script><!-- htmx -->
-<style type="text/css">
-	div#vista{
-		height: 88vh;
-		overflow-y: auto;
+	</script><!-- datatables -->
+	<style type="text/css">
+		div#vista{
+			height: 88vh;
+			overflow-y: auto;
 
-	}
-	div#top{
-		margin-top: 0px;
-	}
-</style>
+		}
+		div#top{
+			margin-top: 0px;
+		}
+	</style>
 
-
+</head>
 <!--  -->
 <?php
-// session_start();
 include("barra_navegacion.php");
 ?>
-
-
-
-
 
 
 <div id="med" class="container" style="border:2px solid blue;margin-top: 58px;">
@@ -74,16 +58,13 @@ include("barra_navegacion.php");
 						<td >INIC</td>
 						<td>EST</td>
 					</tr>
-					
 				</thead>
 				<tbody id="datos_tabla">
-				
 						<?php
 							include("../controladores/tabla_gestion.php")
 						?>
 				</tbody>
 			</table>
-	
 		</div>
 
 
@@ -91,20 +72,15 @@ include("barra_navegacion.php");
 		</div> <!-- end vista -->
 
 
+		<!-- cargar la pagina del usuario seleccionado -->
 		<script>
 			function mostrar_recurso(id){
-
 				$.post("mostrarDatosGestion.php",
 					{ver_id:id},
 					function(mensaje){
 						$("#vista").html(mensaje);
-					});
-				
+					});		
 			}
-			// mostrar_rec(1);
-			// $("#2").on("click",mostrar_rec(this.id));
-			//addEventListener("click",mostrar_rec(this.id),true);
-		
 		</script>
 
 		<!-- acciones de los botones del menu de gestion -->
@@ -135,23 +111,6 @@ include("barra_navegacion.php");
 
 
 
-
-
-
-
-<!-- script que gestiona el mapa -->
-<!-- <script src="../controlador/ctr_mapa_recurso.js"></script> -->
-
-
-
-
-
-
-
-
-
-
 <?php
 include("end_body.html");
-
 ?>
